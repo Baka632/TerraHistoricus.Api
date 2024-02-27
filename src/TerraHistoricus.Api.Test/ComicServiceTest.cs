@@ -18,4 +18,15 @@ public class ComicServiceTest
             Assert.NotEqual(defaultComicInfo, item);
         }
     }
+
+    [Fact]
+    public async void GetComicDetail()
+    {
+        ComicDetail defaultComicDetail = default;
+
+        // 6253 - 123ÂÞµÂµº£¡£¿
+        ComicDetail result = await ComicService.GetComicDetailAsync("6253");
+
+        Assert.NotEqual(defaultComicDetail, result);
+    }
 }

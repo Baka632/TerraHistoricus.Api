@@ -15,6 +15,6 @@ internal static class CommonValues
     /// </summary>
     public static readonly JsonSerializerOptions DefaultJsonSerializerOptions = new()
     {
-        PropertyNameCaseInsensitive = true
+        PropertyNameCaseInsensitive = true,
     };
 }

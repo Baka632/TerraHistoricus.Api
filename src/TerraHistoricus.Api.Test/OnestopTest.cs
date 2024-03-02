@@ -1,4 +1,7 @@
-﻿using TerraHistoricus.Api.Services;
+﻿// #define ENABLE_ONESTOP_TEST
+
+#if ENABLE_ONESTOP_TEST
+using TerraHistoricus.Api.Services;
 using TerraHistoricus.Api.Models.Comic;
 using TerraHistoricus.Api.Models.Episode;
 using TerraHistoricus.Api.Models.Pages;
@@ -7,7 +10,7 @@ namespace TerraHistoricus.Api.Test;
 
 public class OneStopTest
 {
-    // [Fact]
+    [Fact]
     public async void OneStop()
     {
         PageInfo defaultPageInfo = default;
@@ -35,3 +38,4 @@ public class OneStopTest
         }
     }
 }
+#endif

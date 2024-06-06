@@ -49,7 +49,7 @@ public static class EpisodeAndPageService
     /// <param name="episodeCid">篇章的 CID</param>
     /// <param name="pageNumber">页面的页码</param>
     /// <returns>包含页面详细信息的 <see cref="PageDetail"/></returns>
-    /// <exception cref="ArgumentOutOfRangeException"><paramref name="pageNumber"/> 小于等于零</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="pageNumber"/> 小于 1</exception>
     /// <exception cref="ArgumentException">参数错误</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="comicCid"/> 或 <paramref name="episodeCid"/> 为 null 或空白</exception>
     /// <exception cref="HttpRequestException">由于网络问题，操作失败</exception>
@@ -65,9 +65,9 @@ public static class EpisodeAndPageService
             throw new ArgumentOutOfRangeException(nameof(episodeCid), $"“{nameof(episodeCid)}”不能为 null 或空白。");
         }
 
-        if (pageNumber <= 0)
+        if (pageNumber < 1)
         {
-            throw new ArgumentOutOfRangeException(nameof(pageNumber), "页面的页码应当大于零。");
+            throw new ArgumentOutOfRangeException(nameof(pageNumber), "页面的页码应当大于 1。");
         }
 
         Stream jsonStream = await HttpClientProvider.HttpClient.GetStreamAsync($"comic/{comicCid}/episode/{episodeCid}/page?pageNum={pageNumber}");
